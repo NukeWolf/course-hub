@@ -81,7 +81,7 @@ export default function Home() {
             .filter((st) => st !== "")
             .map((classString) => {
               return (
-                <Col>
+                <Col style={{ margin: "30px" }}>
                   <Card
                     style={{ width: 300 }}
                     cover={<img alt="example" />}
