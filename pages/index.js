@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
+
 import { Layout, Menu, Breadcrumb, Col, Row, Card, Button, Select } from "antd";
 import { ArrowRightOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import Classes from "../config/classes.json";
@@ -21,7 +23,8 @@ export default function Home() {
   if (typeof window !== "undefined" && myCourses == null) {
     const rawCourses = window.localStorage.getItem("myCourses");
     changeMyCourses(rawCourses);
-    if (myCourses == null) window.localStorage.setItem("myCourses", "");
+    console.log(myCourses);
+    if (rawCourses == null) window.localStorage.setItem("myCourses", "");
   }
 
   const [courseAddInput, changeCourseAddInput] = useState("");
@@ -40,8 +43,8 @@ export default function Home() {
     <Layout className="layout">
       <Header>
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item>{`nav`}</Menu.Item>;
+        <Menu theme="dark" mode="horizontal">
+          <Menu.Item>Home</Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "0 50px" }}>
@@ -84,8 +87,11 @@ export default function Home() {
                 <Col style={{ margin: "30px" }}>
                   <Card
                     style={{ width: 300 }}
-                    cover={<img alt="example" />}
-                    actions={[<ArrowRightOutlined key="Right" />]}
+                    actions={[
+                      <Link href={`/class/${classString}`}>
+                        <ArrowRightOutlined key="Right" />
+                      </Link>,
+                    ]}
                   >
                     <Meta
                       title={classString}
@@ -101,9 +107,7 @@ export default function Home() {
             })}
         </Row>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
+      <Footer style={{ textAlign: "center" }}>Made by</Footer>
     </Layout>
   );
 }
