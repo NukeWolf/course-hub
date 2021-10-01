@@ -84,7 +84,7 @@ export default function Home() {
             .filter((st) => st !== "")
             .map((classString) => {
               return (
-                <Col style={{ margin: "30px" }}>
+                <Col style={{ marginRight: "30px", marginBottom: "30px" }}>
                   <Card
                     style={{ width: 300 }}
                     actions={[

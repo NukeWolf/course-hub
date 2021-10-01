@@ -67,7 +67,7 @@ export default function Home() {
               minHeight: 280,
             }}
           >
-            Content
+            In Development
           </Content>
         </Layout>
       </Layout>
